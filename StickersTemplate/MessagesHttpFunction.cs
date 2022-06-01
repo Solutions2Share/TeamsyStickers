@@ -145,7 +145,7 @@ namespace StickersTemplate
 
                 // Get the query string. We expect exactly 1 parameter, so we take the first parameter, regardless of the name.
                 var skip = 0;
-                var count = 25;
+                var count = 40;
                 var query = string.Empty;
                 if (activity.Value != null)
                 {

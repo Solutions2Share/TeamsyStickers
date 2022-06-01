@@ -65,7 +65,7 @@ namespace StickersTemplate.Providers
         }
 
         /// <inheritdoc />
-        public Task<IEnumerable<Sticker>> FindStickersByQuery(string query, int skip = 0, int count = 2, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<IEnumerable<Sticker>> FindStickersByQuery(string query, int skip = 0, int count = 40, CancellationToken cancellationToken = default(CancellationToken))
         {
             using (var scope = this.logger.BeginScope($"{nameof(StickerSetIndexer)}.{nameof(this.FindStickersByQuery)}"))
             {
