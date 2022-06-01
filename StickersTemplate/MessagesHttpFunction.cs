@@ -155,14 +155,14 @@ namespace StickersTemplate
                     if (queryValue?.QueryOptions != null)
                     {
                         skip = queryValue.QueryOptions.Skip;
-                        count = 40;
+                        count = 60;
                     }
                 }
 
                 // Find matching stickers
                 var stickerSet = await stickerSetRepository.FetchStickerSetAsync();
                 await stickerSetIndexer.IndexStickerSetAsync(stickerSet);
-                var stickers = await stickerSetIndexer.FindStickersByQuery(query, skip, 40);
+                var stickers = await stickerSetIndexer.FindStickersByQuery(query, skip, 60);
 
                 var result = new ComposeExtensionResponse
                 {
