@@ -65,7 +65,7 @@ namespace StickersTemplate.Providers
         }
 
         /// <inheritdoc />
-        public Task<IEnumerable<Sticker>> FindStickersByQuery(string query, int skip = 0, int count = 40, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<IEnumerable<Sticker>> FindStickersByQuery(string query, int skip = 0, int count = 25, CancellationToken cancellationToken = default(CancellationToken))
         {
             using (var scope = this.logger.BeginScope($"{nameof(StickerSetIndexer)}.{nameof(this.FindStickersByQuery)}"))
             {
@@ -81,8 +81,6 @@ namespace StickersTemplate.Providers
                     .Where((keyValuePair) => queryWords.Any((word) => keyValuePair.Key.StartsWith(word)))
                     .SelectMany((keyValuePair) => keyValuePair.Value)
                     .Distinct()
-                    .Skip(skip)
-                    .Take(count)
                     .ToArray();
 
                 return Task.FromResult<IEnumerable<Sticker>>(matchedStickers);
