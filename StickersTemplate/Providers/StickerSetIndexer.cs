@@ -81,6 +81,8 @@ namespace StickersTemplate.Providers
                     .Where((keyValuePair) => queryWords.Any((word) => keyValuePair.Key.StartsWith(word)))
                     .SelectMany((keyValuePair) => keyValuePair.Value)
                     .Distinct()
+                    .Skip(skip)
+                    .Take(count)
                     .ToArray();
 
                 return Task.FromResult<IEnumerable<Sticker>>(matchedStickers);
