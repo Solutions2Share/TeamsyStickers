@@ -145,7 +145,7 @@ namespace StickersTemplate
 
                 // Get the query string. We expect exactly 1 parameter, so we take the first parameter, regardless of the name.
                 var skip = 0;
-                var count = 25;
+                var count = 100;
                 var query = string.Empty;
                 if (activity.Value != null)
                 {
@@ -155,14 +155,14 @@ namespace StickersTemplate
                     if (queryValue?.QueryOptions != null)
                     {
                         skip = queryValue.QueryOptions.Skip;
-                        count = 60;
+                        count = 100;
                     }
                 }
 
                 // Find matching stickers
                 var stickerSet = await stickerSetRepository.FetchStickerSetAsync();
                 await stickerSetIndexer.IndexStickerSetAsync(stickerSet);
-                var stickers = await stickerSetIndexer.FindStickersByQuery(query, skip, 60);
+                var stickers = await stickerSetIndexer.FindStickersByQuery(query, 0, 100);
 
                 var result = new ComposeExtensionResponse
                 {
